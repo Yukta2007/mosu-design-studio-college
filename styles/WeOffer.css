@@ -1,0 +1,252 @@
+/* =========================================
+   WE OFFER SECTION
+========================================= */
+.services-section {
+  background: #171717;
+  color: #e8e8e8;
+}
+
+
+/* =========================================
+   HERO WORDS — OTHER SERVICES
+========================================= */
+
+.hero-words {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 2vw;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    overflow: hidden;
+}
+
+.hero-word {
+    position: relative;
+
+    margin: 0;
+
+    font-size: clamp(3rem, 6.5vw, 6.5rem);
+
+    font-weight: 400;
+
+    line-height: 0.85;
+
+    letter-spacing: -0.07em;
+
+    white-space: nowrap;
+
+    color: #fff;
+
+    will-change: transform;
+}
+
+/* =========================================
+   WE OFFER / SERVICES WRAPPER
+========================================= */
+.services-wrapper {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: min(800px, 88vw);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 5;
+
+    opacity: 0;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================
+   SERVICES LIST
+========================================= */
+
+.services-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 4px;
+
+    width: 100%;
+
+    will-change: transform;
+}
+
+
+/* =========================================
+   SERVICE ITEM
+========================================= */
+
+.service-item {
+    display: block;
+
+    margin: 6px 0;
+
+    font-size: clamp(1.45rem, 2.5vw, 2.8rem);
+
+    font-weight: 400;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.045em;
+
+    text-transform: uppercase;
+
+    text-decoration: none;
+
+    color: #fff;
+
+    opacity: 0.45;
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+}
+
+
+.service-item:hover {
+    opacity: 1;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   VIEW ALL SERVICES
+========================================= */
+
+.services-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 42px;
+
+    padding: 11px 23px;
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 999px;
+
+    background: #fff;
+
+    color: #000;
+
+    text-decoration: none;
+
+    font-size: 0.72rem;
+
+    font-weight: 500;
+
+    letter-spacing: 0.02em;
+
+    white-space: nowrap;
+
+    opacity: 0;
+
+    will-change: transform, opacity;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+.button-arrow {
+    font-size: 0.9rem;
+
+    transition: transform 0.3s ease;
+}
+
+
+.services-button:hover {
+    background: transparent;
+
+    color: #fff;
+}
+
+
+.services-button:hover .button-arrow {
+    transform: translate(3px, -3px);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .services-section {
+        min-height: 600px;
+    }
+
+    .hero-word {
+        font-size: clamp(3rem, 9vw, 5.5rem);
+    }
+
+    .services-wrapper {
+        width: 88vw;
+    }
+
+    .service-item {
+        font-size: clamp(1.4rem, 4.5vw, 2.5rem);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .services-section {
+        height: 100vh;
+        min-height: 580px;
+    }
+
+    .hero-word {
+        font-size: 12vw;
+
+        letter-spacing: -0.065em;
+    }
+
+    .services-wrapper {
+        width: 90vw;
+    }
+
+    .service-item {
+        font-size: clamp(1.35rem, 6vw, 2.1rem);
+
+        margin: 5px 0;
+    }
+
+    .services-button {
+        margin-top: 35px;
+
+        padding: 10px 20px;
+
+        font-size: 0.7rem;
+    }
+}

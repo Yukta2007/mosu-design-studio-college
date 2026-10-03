@@ -1,0 +1,274 @@
+@import "tailwindcss";
+
+:root {
+  --background: #242323;
+  --foreground: #e9e9e7;
+
+  --surface: #2b2a2a;
+  --surface-light: #323131;
+
+  --text-primary: #e9e9e7;
+  --text-secondary: #c0c0be;
+  --text-muted: #888886;
+
+  --border: #555454;
+  --border-light: #666565;
+
+  --white: #ffffff;
+  --black: #242323;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-surface: var(--surface);
+  --color-surface-light: var(--surface-light);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-border: var(--border);
+  --color-border-light: var(--border-light);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+
+  overflow-x: hidden;
+
+  background: #242323;
+  color: #e9e9e7;
+
+  font-family: var(--font-neue-haas);
+}
+
+/* =========================
+   GLOBAL RESET
+========================= */
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================
+   SELECTION
+========================= */
+
+::selection {
+  background: #ffffff;
+  color: #242323;
+}
+
+/* =========================
+   IMAGES
+========================= */
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* =========================
+   CURSOR
+========================= */
+
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  width: 28px;
+  height: 28px;
+
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%);
+
+  pointer-events: none;
+  z-index: 999999;
+
+  mix-blend-mode: difference;
+
+  transition: opacity 0.2s ease;
+
+  will-change: left, top;
+}
+
+/* Hide custom cursor on touch devices */
+
+@media (hover: none), (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}
+
+/* =========================
+   LENIS
+========================= */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+/* =========================
+   TEXT REVEAL
+========================= */
+
+@keyframes textReveal {
+  0% {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* =========================
+   HERO IMAGE
+========================= */
+
+@keyframes heroImage {
+  from {
+    transform: scale(1.1);
+  }
+
+  to {
+    transform: scale(1.04);
+  }
+}
+
+.animate-hero-image {
+  animation: heroImage 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* =========================
+   HERO TITLE
+========================= */
+
+@keyframes heroTitle {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-title {
+  animation:
+    heroTitle
+    1.4s
+    0.25s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+/* =========================
+   CIRCLE
+========================= */
+
+@keyframes circleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-circle {
+  animation:
+    circleIn
+    1s
+    0.8s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+/* =========================
+   FLOATING CIRCLE
+========================= */
+
+@keyframes floatingCircle {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-floating-circle {
+  animation: floatingCircle 4s ease-in-out infinite;
+}
+
+/* =========================
+   MAP
+========================= */
+
+@keyframes map-in {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-map-in {
+  animation:
+    map-in
+    0.6s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}

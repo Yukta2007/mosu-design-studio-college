@@ -1,0 +1,115 @@
+.page {
+  background: #242323;
+  min-height: 100vh;
+  padding: 9rem 2rem 6rem;
+}
+
+.title {
+  text-align: center;
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 5rem;
+  color: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.card {
+  position: relative;
+  height: 620px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #242323;
+}
+
+.image {
+  object-fit: cover;
+  transition: all 0.8s ease;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  transition: 0.6s;
+}
+
+.content {
+  position: absolute;
+  left: 3rem;
+  bottom: 3rem;
+  z-index: 2;
+}
+
+.heading {
+  color: #fff;
+  font-size: clamp(2.3rem, 3vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.button {
+  margin-top: 2rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: 999px;
+  border: none;
+  background: #fff;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.82rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.45s ease;
+}
+
+/* Hover */
+
+.card:hover .image {
+  transform: scale(1.08);
+  filter: blur(4px);
+}
+
+.card:hover .overlay {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.card:hover .button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 7rem 1rem 4rem;
+  }
+
+  .heading {
+    font-size: 2.3rem;
+  }
+
+  .card {
+    height: 420px;
+  }
+}

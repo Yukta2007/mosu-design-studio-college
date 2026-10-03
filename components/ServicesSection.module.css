@@ -1,0 +1,86 @@
+.services-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: #171717;
+  color: #e8e8e8;
+}
+
+/* WE / DO */
+.hero-words {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.we,
+.do {
+  position: absolute;
+  font-size: clamp(4rem, 7vw, 7rem);
+  font-weight: 800;
+  line-height: 1;
+  color: #e8e8e8;
+}
+
+/* SERVICES */
+.services-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.service-item {
+  display: block;
+  color: #d5d5d5;
+  font-size: clamp(1rem, 1.4vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.service-item:hover {
+  color: #ffffff;
+  transform: translateX(8px);
+}
+
+/* BUTTON */
+.services-button {
+  margin-top: 35px;
+  padding: 13px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  transition:
+    background 0.4s ease,
+    color 0.4s ease;
+}
+
+.services-button:hover {
+  background: #ffffff;
+  color: #171717;
+}

@@ -1,0 +1,71 @@
+.monograph{
+    position:relative;
+    background:#f6f4f2;
+    overflow:hidden;
+    padding:100px 0 120px;
+}
+
+.mono-title{
+    font-size:16vw;
+    font-weight:900;
+    line-height:.82;
+    text-transform:uppercase;
+    color:#1b1b1b;
+    white-space:nowrap;
+
+    width:95%;
+    margin:auto;
+}
+
+.mono-content{
+    width:92%;
+    margin:auto;
+    margin-top:-60px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+}
+
+.mono-left{
+    width:28%;
+}
+
+.mono-left p{
+    font-size:28px;
+    line-height:1.05;
+    text-transform:uppercase;
+    color:#1b1b1b;
+    margin-bottom:40px;
+}
+
+.mono-left button{
+    border:none;
+    background:#d9d9d9;
+    border-radius:30px;
+    padding:12px 28px;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.mono-right{
+    width:52%;
+    display:flex;
+    justify-content:center;
+}
+
+.mono-right img{
+    width:100%;
+    max-width:760px;
+    display:block;
+
+    transform:rotate(-7deg);
+
+    filter:drop-shadow(0 30px 60px rgba(0,0,0,.18));
+
+    transition:.6s;
+}
+
+.monograph:hover .mono-right img{
+    transform:rotate(-3deg) scale(1.02);
+}
