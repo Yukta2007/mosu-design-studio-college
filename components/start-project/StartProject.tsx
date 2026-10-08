@@ -29,7 +29,13 @@ export default function StartProject() {
     };
 
     try {
-      const response = await fetch("/api/enquiry", {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+      if (!apiUrl) {
+        throw new Error("Backend API URL is not configured");
+      }
+
+      const response = await fetch(`${apiUrl}/api/enquiry`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +62,7 @@ export default function StartProject() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-black text-white">
 
-      {/* ================= CLOSE ================= */}
+      {/* CLOSE */}
 
       <button
         type="button"
@@ -84,9 +90,7 @@ export default function StartProject() {
           xl:right-20
         "
       >
-        <span className="transition-opacity duration-300 group-hover:text-white">
-          CLOSE
-        </span>
+        <span> CLOSE </span>
 
         <span
           className="
@@ -110,7 +114,7 @@ export default function StartProject() {
         </span>
       </button>
 
-      {/* ================= PAGE ================= */}
+      {/* PAGE */}
 
       <section className="flex min-h-screen items-center px-6 py-20 sm:px-10 lg:px-16 xl:px-24">
         <div
@@ -188,6 +192,8 @@ export default function StartProject() {
 
             <form onSubmit={handleSubmit} className="w-full">
 
+              {/* NAME */}
+
               <div className="border-b border-white/20 py-4">
                 <input
                   name="name"
@@ -197,6 +203,8 @@ export default function StartProject() {
                   className="w-full bg-transparent text-[11px] uppercase tracking-[0.12em] text-white outline-none placeholder:text-white/40 sm:text-[12px] lg:text-[13px]"
                 />
               </div>
+
+              {/* EMAIL */}
 
               <div className="border-b border-white/20 py-4">
                 <input
@@ -208,6 +216,8 @@ export default function StartProject() {
                 />
               </div>
 
+              {/* PHONE */}
+
               <div className="border-b border-white/20 py-4">
                 <input
                   name="phone"
@@ -216,6 +226,8 @@ export default function StartProject() {
                   className="w-full bg-transparent text-[11px] uppercase tracking-[0.12em] text-white outline-none placeholder:text-white/40 sm:text-[12px] lg:text-[13px]"
                 />
               </div>
+
+              {/* PROJECT TYPE */}
 
               <div className="border-b border-white/20 py-4">
                 <select
@@ -227,14 +239,34 @@ export default function StartProject() {
                   <option value="" disabled>
                     PROJECT TYPE*
                   </option>
-                  <option value="architecture">ARCHITECTURE</option>
-                  <option value="interiors">INTERIOR DESIGN</option>
-                  <option value="residential">RESIDENTIAL</option>
-                  <option value="hospitality">HOSPITALITY</option>
-                  <option value="bespoke">BESPOKE DESIGN</option>
-                  <option value="art">ART / INSTALLATION</option>
+
+                  <option value="architecture">
+                    ARCHITECTURE
+                  </option>
+
+                  <option value="interiors">
+                    INTERIOR DESIGN
+                  </option>
+
+                  <option value="residential">
+                    RESIDENTIAL
+                  </option>
+
+                  <option value="hospitality">
+                    HOSPITALITY
+                  </option>
+
+                  <option value="bespoke">
+                    BESPOKE DESIGN
+                  </option>
+
+                  <option value="art">
+                    ART / INSTALLATION
+                  </option>
                 </select>
               </div>
+
+              {/* LOCATION */}
 
               <div className="border-b border-white/20 py-4">
                 <input
@@ -245,6 +277,8 @@ export default function StartProject() {
                 />
               </div>
 
+              {/* MESSAGE */}
+
               <div className="border-b border-white/20 py-4">
                 <textarea
                   name="message"
@@ -254,17 +288,43 @@ export default function StartProject() {
                 />
               </div>
 
+              {/* ERROR */}
+
               {error && (
                 <p className="mt-4 text-[10px] uppercase tracking-[0.15em] text-red-400">
                   {error}
                 </p>
               )}
 
+              {/* BUTTON */}
+
               <div className="mt-7 flex justify-end">
                 <button
                   type="submit"
                   disabled={loading || submitted}
-                  className="group flex items-center gap-3 rounded-full bg-white px-7 py-3.5 text-[10px] uppercase tracking-[0.2em] text-black transition-all duration-300 hover:bg-white/15 hover:text-white disabled:cursor-not-allowed disabled:opacity-60 sm:px-8 sm:py-4 sm:text-[11px]"
+                  className="
+                    group
+                    flex
+                    items-center
+                    gap-3
+                    rounded-full
+                    bg-white
+                    px-7
+                    py-3.5
+                    text-[10px]
+                    uppercase
+                    tracking-[0.2em]
+                    text-black
+                    transition-all
+                    duration-300
+                    hover:bg-white/15
+                    hover:text-white
+                    disabled:cursor-not-allowed
+                    disabled:opacity-60
+                    sm:px-8
+                    sm:py-4
+                    sm:text-[11px]
+                  "
                 >
                   {loading
                     ? "SENDING..."

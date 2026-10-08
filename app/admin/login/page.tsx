@@ -18,11 +18,18 @@ export default function AdminLoginPage() {
     setError("");
 
     try {
-      const response = await fetch("/api/admin/login", {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+      if (!apiUrl) {
+        throw new Error("Backend API URL is not configured.");
+      }
+
+      const response = await fetch(`${apiUrl}/api/admin/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify({
           email,
           password,
@@ -40,7 +47,7 @@ export default function AdminLoginPage() {
       router.refresh();
     } catch (error) {
       console.error("LOGIN ERROR:", error);
-      setError("Something went wrong. Please try again.");
+      setError("Unable to connect to the backend. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -49,6 +56,8 @@ export default function AdminLoginPage() {
   return (
     <main className="min-h-screen bg-[#171717] text-white flex items-center justify-center px-6">
       <div className="w-full max-w-md">
+
+        {/* HEADER */}
 
         <div className="mb-10 text-center">
           <p className="text-sm tracking-[0.3em] text-white/50 mb-4">
@@ -64,10 +73,14 @@ export default function AdminLoginPage() {
           </p>
         </div>
 
+        {/* LOGIN FORM */}
+
         <form
           onSubmit={handleSubmit}
           className="border border-white/15 bg-white/[0.03] p-8 space-y-6"
         >
+          {/* EMAIL */}
+
           <div>
             <label className="block text-sm text-white/60 mb-2">
               Email
@@ -79,9 +92,22 @@ export default function AdminLoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="admin@mosu.com"
               required
-              className="w-full bg-transparent border border-white/20 px-4 py-3 outline-none focus:border-white/60 transition"
+              autoComplete="email"
+              className="
+                w-full
+                bg-transparent
+                border
+                border-white/20
+                px-4
+                py-3
+                outline-none
+                focus:border-white/60
+                transition
+              "
             />
           </div>
+
+          {/* PASSWORD */}
 
           <div>
             <label className="block text-sm text-white/60 mb-2">
@@ -94,9 +120,22 @@ export default function AdminLoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
               required
-              className="w-full bg-transparent border border-white/20 px-4 py-3 outline-none focus:border-white/60 transition"
+              autoComplete="current-password"
+              className="
+                w-full
+                bg-transparent
+                border
+                border-white/20
+                px-4
+                py-3
+                outline-none
+                focus:border-white/60
+                transition
+              "
             />
           </div>
+
+          {/* ERROR */}
 
           {error && (
             <p className="text-sm text-red-400">
@@ -104,19 +143,43 @@ export default function AdminLoginPage() {
             </p>
           )}
 
+          {/* BUTTON */}
+
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-white text-black py-3 uppercase tracking-wider text-sm hover:bg-white/80 transition disabled:opacity-50"
+            className="
+              w-full
+              bg-white
+              text-black
+              py-3
+              uppercase
+              tracking-wider
+              text-sm
+              hover:bg-white/80
+              transition
+              disabled:opacity-50
+              disabled:cursor-not-allowed
+            "
           >
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
+        {/* BACK */}
+
         <button
           type="button"
           onClick={() => router.push("/")}
-          className="block mx-auto mt-6 text-sm text-white/40 hover:text-white transition"
+          className="
+            block
+            mx-auto
+            mt-6
+            text-sm
+            text-white/40
+            hover:text-white
+            transition
+          "
         >
           ← Back to website
         </button>
